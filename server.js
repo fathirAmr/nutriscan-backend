@@ -13,6 +13,16 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// 👉 ADD THIS HERE
+app.get("/test-db", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT 1 + 1 AS result");
+    res.json({ success: true, result: rows[0].result });
+  } catch (err) {
+    res.json({ success: false, error: err.message });
+  }
+});
+
 function calculateNutritionGrade(nutrition) {
   if (!nutrition) {
     return 'N/A';
@@ -629,4 +639,5 @@ app.delete('/api/admin/products/:id', authenticateAdmin, async (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
+
 });
