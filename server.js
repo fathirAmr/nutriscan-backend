@@ -414,7 +414,7 @@ app.post('/api/admin/login', async (req, res) => {
     const admin = admins[0];
     
     // Verifikasi password
-    const isValidPassword = await bcrypt.compare(password, admin.password);
+    // const isValidPassword = await bcrypt.compare(password, admin.password);
     
     console.log('Password valid:', isValidPassword); // Debug log
     
