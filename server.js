@@ -385,6 +385,10 @@ app.delete('/api/history/clear', async (req, res) => {
   }
 });
 
+app.post("/frontend-error", (req, res) => {
+  console.log("🔥 Frontend Error:", req.body);
+  res.json({ success: true });
+});
 // ============================================
 // ADMIN ROUTES
 // ============================================
