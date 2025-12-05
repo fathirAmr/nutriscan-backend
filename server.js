@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('./db');
 const { authenticateAdmin } = require('./middleware/auth');
@@ -414,7 +414,7 @@ app.post('/api/admin/login', async (req, res) => {
     const admin = admins[0];
     
     // Verifikasi password
-    const isValidPassword = await bcrypt.compare(password, admin.password);
+    const isValidPassword = (password === admin.password);
     
     console.log('Password valid:', isValidPassword); // Debug log
     
